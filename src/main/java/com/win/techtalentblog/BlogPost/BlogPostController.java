@@ -44,9 +44,10 @@ public class BlogPostController {
         blogPostRepository.save(new BlogPost(blogPost.getTitle(), blogPost.getAuthor(), blogPost.getBlogEntry()));
 
         // posts.add(blogPost);
-        model.addAttribute("title", blogPost.getTitle());
-        model.addAttribute("author", blogPost.getAuthor());
-        model.addAttribute("blogEntry", blogPost.getBlogEntry());
+        model.addAttribute("blogpost", blogPost);
+        // model.addAttribute("title", blogPost.getTitle());
+        // model.addAttribute("author", blogPost.getAuthor());
+        // model.addAttribute("blogEntry", blogPost.getBlogEntry());
         return "blogpost/result";
     }
 
