@@ -55,15 +55,35 @@ public class BlogPostController {
     // Spring takes whatever value is in {id} and passes it to our method params
     // using @PathVariable
     public String editPostWithId(@PathVariable Long id, BlogPost blogPost, Model model) {
-        // findById() retunrs an Optional<T> which can be null, so we have to test
+        // findById() returns an Optional<T> which can be null, so we have to test
         Optional<BlogPost> post = blogPostRepository.findById(id);
-        // test if post actually has anything in it
+        // Test if post actually has anything in it
         if (post.isPresent()) {
             // Unwrap the post from Optional shell
             BlogPost actualPost = post.get();
-            model.addAttribute("blogpost", actualPost);
+            model.addAttribute("blogPost", actualPost);
         }
         return "blogpost/edit";
+    }
+
+    @RequestMapping(value = "/blogposts/update/{id}")
+    public String updateExistingPost(@PathVariable Long id, BlogPost blogPost, Model model) {
+        Optional<BlogPost> post = blogPostRepository.findById(id);
+        if (post.isPresent()) {
+            BlogPost actualPost = post.get();
+            actualPost.setTitle(blogPost.getTitle());
+            actualPost.setAuthor(blogPost.getAuthor());
+            actualPost.setBlogEntry(blogPost.getBlogEntry());
+            // save() is SO AWESOME that it works for both creating new posts
+            // and overwriting existing posts
+            // If the primary key of the Entity we give it matches the primary key
+            // of a record already in the database, it will save over it
+            // instead of creating a new record
+            blogPostRepository.save(actualPost);
+            model.addAttribute("blogPost", actualPost);
+        }
+
+        return "blogpost/result";
     }
 
 }
