@@ -7,25 +7,29 @@ import javax.persistence.Id;
 
 @Entity
 public class BlogPost {
-    
-    @Id
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	@Id
 
-    private String title;
-    private String author;
-    private String blogEntry;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    public BlogPost(){
-        // non-argument constructor for JPA
-    }
+	private String title;
+	private String author;
+	private String blogEntry;
 
-    public BlogPost(String title, String author, String blogEntry) {
-        this.title = title;
-        this.author = author;
-        this.blogEntry = blogEntry;
-    }
+	public BlogPost() {
+		// non-argument constructor for JPA
+	}
+
+	public BlogPost(String title, String author, String blogEntry) {
+		this.title = title;
+		this.author = author;
+		this.blogEntry = blogEntry;
+	}
+
+	public Long getId() {
+		return id;
+	}
 
 	public String getTitle() {
 		return title;
@@ -49,14 +53,11 @@ public class BlogPost {
 
 	public void setBlogEntry(String blogEntry) {
 		this.blogEntry = blogEntry;
-    }
+	}
 
 	@Override
 	public String toString() {
 		return "BlogPost [author=" + author + ", blogEntry=" + blogEntry + ", id=" + id + ", title=" + title + "]";
 	}
-    
-    
 
-    
 }
