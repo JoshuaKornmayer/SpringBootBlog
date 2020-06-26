@@ -41,10 +41,11 @@ public class BlogPostController {
 
     @PostMapping(value = "/blogposts")
     public String addNewBlogPost(BlogPost blogPost, Model model) {
-        blogPostRepository.save(new BlogPost(blogPost.getTitle(), blogPost.getAuthor(), blogPost.getBlogEntry()));
+        blogPostRepository.save(blogPost);
 
         // posts.add(blogPost);
-        model.addAttribute("blogpost", blogPost);
+        model.addAttribute("blogPost", blogPost);
+
         // model.addAttribute("title", blogPost.getTitle());
         // model.addAttribute("author", blogPost.getAuthor());
         // model.addAttribute("blogEntry", blogPost.getBlogEntry());
