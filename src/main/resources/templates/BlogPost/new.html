@@ -11,28 +11,36 @@
     <div class="container">
       <div th:replace="/fragments/navbar :: navbar"></div>
       <div class="row">
-        <p>Use the form below to submit a blog post:</p>
-        <form
-          action="#"
-          th:action="@{/blogposts}"
-          th:object="${blogPost}"
-          method="POST"
-        >
-          <label for="blogTitle">Title:</label>
-          <input type="text" name="blogTitle" th:field="*{title}" />
-
-          <label for="blogAuthor">Author:</label>
-          <input type="text" name="blogAuthor" th:field="*{author}" />
-
-          <label for="blogEntry">Blog Entry:</label>
-          <input type="text" name="blogEntry" th:field="*{blogEntry}" />
-
-          <button type="submit" class="btn btn-success">
-            Submit Your Blog
-          </button>
-        </form>
+        <div class="col-md">
+          <h3>Use the form below to submit a blog post:</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md">
+          <form
+            class="newSearch"
+            action="#"
+            th:action="@{/blogposts}"
+            th:object="${blogPost}"
+            method="POST"
+          >
+            <label for="blogTitle">Title:</label>
+            <input type="text" name="blogTitle" th:field="*{title}" />
+            <br />
+            <label for="blogAuthor">Author:</label>
+            <input type="text" name="blogAuthor" th:field="*{author}" />
+            <br />
+            <label for="blogEntry">Blog Entry:</label>
+            <input type="text" name="blogEntry" th:field="*{blogEntry}" />
+            <br />
+            <button type="submit" class="btn">
+              Submit Your Blog
+            </button>
+          </form>
+        </div>
       </div>
     </div>
+    <br />
 
     <div th:replace="/fragments/styling :: body-links"></div>
   </body>

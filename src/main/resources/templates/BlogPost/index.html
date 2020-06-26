@@ -12,19 +12,21 @@
     <link rel="stylesheet" href="css/main.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <div th:replace="/fragments/navbar :: navbar"></div>
 
       <div class="row">
         <div class="col-md">
-          <h1>Welcome to my Blog Site!</h1>
+          <h1>Hosh Posh Blogs!</h1>
+          <h2>Blogs About Literally Anything</h2>
+          <br />
           <h3>Check out our blogs!</h3>
         </div>
       </div>
-
+      <br />
       <div class="row">
         <div th:each="blog:${posts}">
-          <div class="col-sm">
+          <div class="col-sm cardRow">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title" th:text="${blog.title}"></h5>
@@ -39,14 +41,18 @@
         </div>
         <!-- End of posts loop -->
       </div>
+      <br />
       <div class="row">
         <div class="col-xl">
           <a href="/blogposts/new">
-            <button class="btn btn-primary">Submit A New Blog Post</button>
+            <button class="btn submit btn-primary">
+              Submit A New Blog Post
+            </button>
           </a>
         </div>
       </div>
     </div>
+    <br />
 
     <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
     <script src="webjars/popper.js/2.0.2/umd/popper.min.js"></script>
